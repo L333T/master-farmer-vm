@@ -3,7 +3,7 @@
 -- Path profiles — save / load / play PathTool JSON from scripts_data
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- Files live in scripts_data/mfg_profiles/*.json (do not prefix scripts_data/).
 -- ============================================================================

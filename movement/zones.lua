@@ -3,7 +3,7 @@
 -- movement/zones.lua - blacklist zones
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- ============================================================================
 -- Areas movement refuses to path into, pruned in place on a TTL. Nothing here
 -- issues a command, so every other module may require it freely.

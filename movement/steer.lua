@@ -3,7 +3,7 @@
 -- movement/steer.lua - candidate steering
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- ============================================================================
 -- Everything that decides WHERE to hop next. Nothing in this file issues a
 -- command - it only returns pool points for an actuator module to act on.

@@ -2,7 +2,7 @@
 -- Master Farmer - Grindbot
 -- Identity — single source of truth for name / authors / version
 -- ============================================================================
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Authors: BLIZZ - Anthonyk
 -- Folder: Master_Farmer_vM
 -- ============================================================================
@@ -25,6 +25,6 @@ return {
     description = "Master Farmer on Marty Nav (test build - no AmeisenNav, no Sentinel)",
     authors = "BLIZZ - Anthonyk",
     author = "BLIZZ - Anthonyk",
-    version = "1.0.0",
+    version = "1.0.1",
     folder = "Master_Farmer_vM",
 }

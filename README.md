@@ -40,8 +40,9 @@ renamed to `marty/...`. Marty's own `main.lua` (menu, test tools, path drawing,
 publishing in `_G`) is not used: nothing is published in `_G`, so a Marty_Nav or
 AmeisenNav plugin loaded beside this one is never touched.
 
-Path server: `marty/config.lua` `url` (`https://nav.deathwing.fyi/nav/testpath`,
-the open test endpoint). The status window's **Marty Nav** row shows
+Path server: `marty/config.lua` `url` (`https://nav.deathwing.fyi/nav/path`;
+the old open test endpoint `/nav/testpath` is gone). A token, if the server
+wants one, goes in `token` (sent as `X-Nav-Token`). The status window's **Marty Nav** row shows
 `Marty Nav ready` / `path server not answering`.
 
 ## Install

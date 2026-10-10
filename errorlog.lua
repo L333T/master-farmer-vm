@@ -3,7 +3,7 @@
 -- Error log, written to scripts_log/MASTER_FARMER_VM_ERRORS
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- One file per session:

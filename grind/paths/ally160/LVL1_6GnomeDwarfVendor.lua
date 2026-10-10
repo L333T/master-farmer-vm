@@ -3,7 +3,7 @@
 -- Gnome/Dwarf 1-6 (Vendor)
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- Generated from PathTool JSON. Do not hand-edit: regenerate instead.

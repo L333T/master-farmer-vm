@@ -3,7 +3,7 @@
 -- Debug log, written to scripts_data
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- Every debug toggle in this project used core.log, which goes to the console

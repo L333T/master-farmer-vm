@@ -3,7 +3,7 @@
 -- RestedXP target mobs per quest (GENERATED - tools/gen_rxp_targets.py)
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- The mobs RestedXP's target frame shows for a quest objective, read from the

@@ -8,7 +8,10 @@
 
 return {
     -- server
-    url                 = "https://nav.deathwing.fyi/nav/testpath",
+    -- vM 1.0.1: /nav/path - the open /nav/testpath answers 404 and
+    -- /api/nav/testpath 410 Gone (2026-10-10). If /nav/path needs a token,
+    -- set `token` below (sent as X-Nav-Token).
+    url                 = "https://nav.deathwing.fyi/nav/path",
     base_url            = "https://nav.deathwing.fyi",   -- AmeisenNav name; informational
     token               = "",
     request_timeout     = 8.0,      -- a remote server: longer than AmeisenNav's 3 s
