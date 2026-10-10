@@ -1,0 +1,166 @@
+-- ============================================================================
+-- Master Farmer - Grindbot
+-- Combat potions, and the gate that lets a rotation rest
+-- ============================================================================
+-- Authors: BLIZZ - Anthonyk
+-- Version: 1.0.0
+-- Folder: Master_Farmer_vM
+-- ============================================================================
+-- WHAT MOVED, AND WHY THIS FILE STILL EXISTS  (1.8.0)
+--   Eating and drinking now belong to the class rotations: each one decides
+--   when to sit down and at what percentage, and resting.lua holds the shared
+--   machinery. This file kept two jobs.
+--
+--   1. POTIONS. They are used in combat, which is exactly when resting cannot
+--      happen, so they never belonged with the eat/drink code.
+--
+--   2. THE GATE. "Eat / Drink" on the Resting tab is what lets the loaded
+--      rotation's resting run at all. With it off, no class rests.
+--
+--   healing.is_resting() is kept and forwards to resting.is_resting(), because
+--   loot.lua, rotation.lua, grind/engine.lua, quest/engine.lua and main.lua all
+--   ask this question and none of them should care where the answer comes from.
+-- ============================================================================
+
+---@type izi_api
+local izi = require("common/izi_sdk")
+
+local gui = require("gui")
+local resting = require("resting")
+
+local healing = {}
+
+-- REST PROBE (2.193.0): marks inside u:healing for the PERF / SPIKE lines.
+local function hprobe(tag)
+    local ok, el = pcall(require, "errorlog")
+    if ok and type(el) == "table" and type(el.probe) == "function" then
+        pcall(el.probe, tag)
+    end
+end
+
+local function safe(fn)
+    local ok, result = pcall(fn)
+    if ok then
+        return result
+    end
+    return nil
+end
+
+local function as_percent(value, current, maximum)
+    if type(value) == "number" then
+        if value >= 0 and value <= 1.5 then
+            return value * 100
+        end
+        return value
+    end
+    if type(current) == "number" and type(maximum) == "number" and maximum > 0 then
+        return (current / maximum) * 100
+    end
+    return 100
+end
+
+local function health_pct(player)
+    local pct = safe(function() return player:get_health_percentage() end)
+    local cur = safe(function() return player:get_health() end)
+    local maxh = safe(function() return player:max_health() end)
+    return as_percent(pct, cur, maxh)
+end
+
+local power = require("power")
+
+local function mana_pct(player)
+    -- power.lua (2.202.0): izi mana_* first, native get_power / get_max_power (mana 0) when
+    -- they read nothing - on WoW Forever a Mage read as having no mana and never drank.
+    return power.mana_pct(player)
+end
+
+-- ----------------------------------------------------------------------------
+-- PUBLIC
+-- ----------------------------------------------------------------------------
+--- Forwarded so every existing caller keeps working: loot, rotation, the grind
+--- and quest engines and main all ask healing whether the bot is sitting down.
+function healing.is_resting()
+    return resting.is_resting()
+end
+
+function healing.tick(player)
+    if not player then
+        resting.clear()
+        return false
+    end
+
+    -- In combat: potions only. Resting is impossible here, and the rotation is
+    -- busy fighting.
+    if safe(function() return player:is_in_combat() end) == true then
+        -- Combat ends a rest (2.48.0). resting.tick is the only place that
+        -- cleared it, and this branch never reached it: a mob that attacked
+        -- mid-meal met a character whose rest lock froze combat movement and
+        -- whose rotation stood down (rotation.tick returns while resting) -
+        -- the 23:02 log shows a whole fight "closing" at 1-3 yd, then death.
+        if resting.is_resting() then
+            resting.clear()
+        end
+        if gui.is_on("potions") then
+            local hp = health_pct(player)
+            local mana = mana_pct(player)
+            local has_mana = power.has_mana(player)
+            -- 2.270.0: the health 1.5 s from now (get_health_percentage_inc,
+            -- an IZI forecast of the incoming damage) - the potion goes in
+            -- before a big hit lands, not after
+            local fut = safe(function() return player:get_health_percentage_inc(1.5) end)
+            if type(fut) == "number" and fut > 0 and fut < hp then hp = fut end
+            if hp <= gui.slider("hp_pot", 35) then
+                izi.use_best_health_potion_safe()
+            end
+            if has_mana and mana <= gui.slider("mp_pot", 20) then
+                izi.use_best_mana_potion_safe()
+            end
+        end
+        return false
+    end
+
+    -- Out of combat: the Resting tab's Eat / Drink checkbox is the gate, and
+    -- the loaded rotation decides the rest.
+    if gui.is_on("eat_drink") ~= true then
+        resting.clear()
+        return false
+    end
+
+    -- Nobody may be attacking (2.102.0): until every attacker is dead there
+    -- is no rest - and one under way stops, so the character fights back.
+    hprobe("heal:attackers")
+    local ok_t, targeting = pcall(require, "targeting")
+    if ok_t and type(targeting) == "table" and type(targeting.attackers) == "function"
+        and targeting.attackers(player) > 0 then
+        if resting.is_resting() then
+            resting.clear()
+        end
+        return false
+    end
+
+    -- Loot first, then rest (2.101.0): a rest does not START while looting
+    -- is still working the corpses close by (or has just finished, or the
+    -- fight has only just ended). A rest already under way is not touched.
+    hprobe("heal:loot_hold")
+    if not resting.is_resting() then
+        local ok_l, loot = pcall(require, "loot")
+        if ok_l and type(loot) == "table" and type(loot.hold_rest) == "function" and loot.hold_rest(player) then
+            -- 2.240.0: under the rest line, hold the tick (loot.tick has already
+            -- run above us) instead of falling through to the quest / grind,
+            -- which started an AmeisenNav approach at 1% mana 0.2 s before the rest.
+            if type(resting.below_line) == "function" and resting.below_line(player) then
+                return true
+            end
+            return false
+        end
+    end
+
+    hprobe("heal:rotation.rest")
+    local ok, rotation = pcall(require, "rotation")
+    if not ok or type(rotation) ~= "table" or type(rotation.rest) ~= "function" then
+        return false
+    end
+    return rotation.rest(player) == true
+end
+
+return healing

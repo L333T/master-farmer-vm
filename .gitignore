@@ -1,0 +1,7 @@
+.claude/
+*.zip
+__pycache__/
+*.bak
+AmeisenNav/
+ameisen/
+.cursor/

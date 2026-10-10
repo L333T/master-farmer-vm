@@ -1,0 +1,5 @@
+# Master Farmer vM - versions
+
+| Version | Changes |
+|---|---|
+| 1.0.0 | **First vM build: Master Farmer on Marty Nav.** Taken from Master Farmer - Grindbot 2.272.1 (questing, grinding, gathering, rotations, vendor, rest, loot, death zones, callbacks). Navigation is the embedded Marty Nav 2.0.0 (`marty/`: client, query, transport, config, journal, json; `marty/nav.lua` drives it every frame) - no AmeisenNav (no `ameisen/` folder, no `_G.AmeisenNav`, no 127.0.0.1:47110 boot posts), no Sentinel, only the Sylvanas API (`core.http_post` to the Marty path server, `simple_movement`). `movement/sentinel.lua` N.client takes the client from `marty/nav`; the status row reads "Marty Nav". Own identity so it never mixes with the Grindbot: plugin "Master Farmer vM", folder `Master_Farmer_vM`, menu ids `mfvm_*`, data `scripts_data/mfvm`, logs `scripts_log/MASTER_FARMER_VM_ERRORS`, namespace `_G.MasterFarmer_vM`. Test HTTP loader in `plugin_loader/` ("Master Farmer vM (HTTP)") downloads `L333T/master-farmer-vm` main. `tests/test_marty_embed.lua`. |
