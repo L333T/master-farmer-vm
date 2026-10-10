@@ -3,7 +3,7 @@
 -- Auto loot - a GUID queue, resolved fresh every tick
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- HOW IT WORKS

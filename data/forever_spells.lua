@@ -3,7 +3,7 @@
 -- WoW Forever trainer spell ids (GENERATED - tools/gen_forever_spells.py)
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- From RXPGuides DB/forever/spells.lua (addon.defaultSpellList). Keys are

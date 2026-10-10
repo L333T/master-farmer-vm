@@ -3,7 +3,7 @@
 -- strafe.lua - Rogue "Strafe Combat": short left / right micro-strafes
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- WHAT IT DOES (2.212.0)

@@ -3,7 +3,7 @@
 -- Marty Nav, embedded: the bot's only navigation
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk  (Marty Nav 2.0.0: 1stblizz)
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- This build of Master Farmer walks with Marty Nav and nothing else: no

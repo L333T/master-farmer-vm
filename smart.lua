@@ -3,7 +3,7 @@
 -- Smart rotation - built from the spells ticked in the Spells tab
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- WHAT THIS IS (2.64.0)

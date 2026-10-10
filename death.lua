@@ -3,7 +3,7 @@
 -- Death run — release, path graveyard to corpse, retrieve
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 

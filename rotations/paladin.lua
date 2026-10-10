@@ -3,7 +3,7 @@
 -- Paladin grind filler + OOC buffs (TBC)
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- WHY THE AURA IS A DROPDOWN AND NOT SIX CHECKBOXES

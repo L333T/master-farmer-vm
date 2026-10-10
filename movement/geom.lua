@@ -3,7 +3,7 @@
 -- movement/geom.lua - number-only geometry (results go into pool slots)
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- ============================================================================
 -- Every function here returns a pool point that is valid only until the next
 -- steering call. Copy it (rt.to_vec3) before handing it to anything that keeps

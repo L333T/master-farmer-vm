@@ -3,7 +3,7 @@
 -- Per-character settings, saved to scripts_data/
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- WHAT THIS IS FOR, AND WHAT IT IS NOT FOR

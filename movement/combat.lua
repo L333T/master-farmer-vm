@@ -3,7 +3,7 @@
 -- movement/combat.lua - combat movement
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- ============================================================================
 -- Approach, retreat and the hysteresis that keeps the player off the range
 -- edge. The class profile decides the "why" of a retreat; this module decides

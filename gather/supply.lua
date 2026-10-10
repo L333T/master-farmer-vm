@@ -4,7 +4,7 @@
 -- "Food, drink, ammo")
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 -- Port of EP_Herb_Mine BulletRun / BuyBullets / Hunter_Ammo_* and

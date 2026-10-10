@@ -74,7 +74,7 @@ local req = nil
 for _, p in ipairs(posts) do
     if p.body:find('"x": 30.00', 1, true) then req = p end
 end
-check("move_to POSTs to the Marty path server", req and tostring(req.url):find("nav.deathwing.fyi", 1, true) ~= nil,
+check("move_to POSTs to the Marty path server", req and tostring(req.url):find("nav.deathwing.fyi/nav/path", 1, true) ~= nil,
     req and req.url)
 check("the request is JSON with map, start and destination",
     req and req.body:find('"map"', 1, true) and req.body:find('"start"', 1, true)

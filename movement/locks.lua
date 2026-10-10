@@ -3,7 +3,7 @@
 -- movement/locks.lua - rest lock and cast / channel / loot locks
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- ============================================================================
 -- Locks pause the walker by reason, so a cast finishing can never un-pause a
 -- stun or a food break. Releasing a cast lock touches only the cast and loot

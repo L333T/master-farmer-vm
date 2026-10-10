@@ -3,7 +3,7 @@
 -- Enemy scan, tap filter, player detect, corpse list
 -- ============================================================================
 -- Authors: BLIZZ - Anthonyk
--- Version: 1.0.0
+-- Version: 1.0.1
 -- Folder: Master_Farmer_vM
 -- ============================================================================
 
